@@ -2,7 +2,7 @@
 
 Rocky Linux 8 Docker container for Ansible playbook and role testing.  
 This container is used to test Ansible roles and playbooks (e.g. with molecule) running locally inside the container.  
-A non-priviledged user `ansible` is created with password-less sudo configured.
+A user `ansible` is created with password-less sudo configured.
 
 [![Docker Build and Publish](https://github.com/TimGrt/docker-rockylinux8-ansible/actions/workflows/ci.yml/badge.svg)](https://github.com/TimGrt/docker-rockylinux8-ansible/actions/workflows/ci.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/timgrt/rockylinux8-ansible) ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/timgrt/docker-rockylinux8-ansible/main)
 
@@ -14,7 +14,7 @@ The following tags are available:
 
 ## How to Build
 
-Ijf you need to build the image on your own locally, do the following:
+If you need to build the image on your own locally, do the following:
 
   1. [Install Docker](https://docs.docker.com/engine/installation/).
   2. Clone the repository and `cd` into this directory.
