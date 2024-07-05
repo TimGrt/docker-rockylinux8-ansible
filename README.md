@@ -33,7 +33,7 @@ If you need to build the image on your own locally, do the following:
 
     ```ini
     [test]
-    instance ansible_connection=podman
+    instance ansible_connection=podman ansible_user=ansible
     ```
 
     Using the ansible user inside the container to be able to test with become.
