@@ -36,6 +36,8 @@ If you need to build the image on your own locally, do the following:
     instance ansible_connection=podman
     ```
 
+    Using the ansible user inside the container to be able to test with become.
+
     You'll need to have the Ansible collection `containers.podman` installed.
 
     ```console
