@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-merge-conflict
+        name: Check for merge conflict markers
+      - id: trailing-whitespace
+        name: Remove trailing whitespaces
+        args: [--markdown-linebreak-ext=md]
+      - id: no-commit-to-branch
+        name: Ensure committing to allowed branch
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.41.0
+    hooks:
+      - id: markdownlint
+        name: Lint Markdown files
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.28.6
+    hooks:
+      - id: check-github-workflows
+        name: Check Github workflows
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        name: Lint Dockerfile
+        entry: ghcr.io/hadolint/hadolint:latest-alpine hadolint
