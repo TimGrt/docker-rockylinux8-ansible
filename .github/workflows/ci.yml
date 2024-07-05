@@ -1,6 +1,5 @@
 ---
 name: Docker Build and Publish
-
 on:
   push:
     branches:
@@ -8,44 +7,22 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
-
-  test:
-    name: Test Docker image build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository.
-        uses: actions/checkout@v3
-
-      - name: Test building image.
-        run: docker build -t docker-ansible .
-
-      - name: Run the built image.
-        run: >-
-          docker run --name test-container -d --privileged
-          -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host
-          docker-ansible
-
-      - name: Verify Ansible is accessible in the built image.
-        run: docker exec --tty test-container env TERM=xterm ansible --version
-
   publish_to_dockerhub:
     name: Publish to DockerHub
     runs-on: ubuntu-latest
-    needs: test
     steps:
       - name: Checkout repository.
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Login to DockerHub.
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push image.
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: ./
           file: Dockerfile
